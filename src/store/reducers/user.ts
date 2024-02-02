@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { UserData } from '../types/modal'
+import { UserData } from '../types/user'
 
 const initialState: UserData = {
   username: '',

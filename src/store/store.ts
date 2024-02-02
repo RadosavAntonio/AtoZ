@@ -2,8 +2,8 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { persistReducer, persistStore } from 'redux-persist'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Reactotron from '../../ReactotronConfig'
-import { UserData } from './types/modal'
-import { userReducer } from './reducers/modal'
+import { UserData } from './types/user'
+import { userReducer } from './reducers/user'
 
 // import { logger } from 'redux-logger'
 
