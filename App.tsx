@@ -13,7 +13,7 @@ export const App = (): JSX.Element => {
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
         <SafeAreaView>
-          <Text>test</Text>
+          <Text>test2</Text>
         </SafeAreaView>
       </PersistGate>
     </Provider>
