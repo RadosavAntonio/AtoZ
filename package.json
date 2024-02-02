@@ -7,14 +7,19 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "i": "yarn && ( cd ios && bundle exec pod install --repo-update) && yarn fix-images",
+    "cleani": "rm -rf node_modules && rm -rf ./ios/Pods && yarn && ( cd ios && bundle exec pod install ) && yarn fix-images"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.21.0",
+    "@reduxjs/toolkit": "^2.1.0",
     "react": "18.2.0",
     "react-native": "0.73.3",
+    "react-redux": "^9.1.0",
     "reactotron-react-native": "^5.0.5",
-    "reactotron-redux": "^3.1.7"
+    "reactotron-redux": "^3.1.7",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
