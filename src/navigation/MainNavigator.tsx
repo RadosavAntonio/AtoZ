@@ -23,6 +23,8 @@ import {
   fasUser,
 } from '../assets/fontAwesome'
 import { getAdjustedWidth } from '../assets/globalUtilityFunctionsAndConstants'
+import { Login } from '../screen/login/login'
+import { Register } from '../screen/login/register'
 
 const AppTabs = createBottomTabNavigator<HomeTabList>()
 
@@ -43,7 +45,7 @@ export const TabsNavigation = memo((): JSX.Element => {
       }}>
       <AppTabs.Screen
         name={HomeTabRoute.FAVORITE}
-        component={Favorite}
+        component={Register}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome
@@ -56,7 +58,7 @@ export const TabsNavigation = memo((): JSX.Element => {
       />
       <AppTabs.Screen
         name={HomeTabRoute.FEED}
-        component={Home}
+        component={Login}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome
@@ -99,6 +101,9 @@ export const MainNavigation = (): JSX.Element => {
       }}>
       <AppStack.Screen name={Screen.HOME} component={TabsNavigation} />
       <AppStack.Screen name={Screen.PROFILE} component={Profile} />
+      <AppStack.Screen name={Screen.FAVORITE} component={Favorite} />
+      <AppStack.Screen name={Screen.LOGIN} component={Login} />
+      <AppStack.Screen name={Screen.REGISTER} component={Register} />
     </AppStack.Navigator>
   )
 }
