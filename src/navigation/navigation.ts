@@ -1,7 +1,7 @@
 export enum Screen {
   HOME = 'Home',
   PROFILE = 'Profile',
-  FAVORITE = 'Favorite',
+  MY_VIDEOS = 'My Videos',
   LOGIN = 'Login',
   REGISTER = 'Register',
 }
@@ -9,7 +9,7 @@ export enum Screen {
 export type AppNavigationParams = {
   [Screen.HOME]: undefined // undefined means there are not props passed through navigation
   [Screen.PROFILE]: undefined
-  [Screen.FAVORITE]: undefined
+  [Screen.MY_VIDEOS]: undefined
   [Screen.LOGIN]: undefined
   [Screen.REGISTER]: undefined
 }
@@ -17,11 +17,11 @@ export type AppNavigationParams = {
 export enum HomeTabRoute {
   FEED = 'Feed',
   PROFILE = 'Profile',
-  FAVORITE = 'Favorite',
+  MY_VIDEOS = 'My videos',
 }
 
 export type HomeTabList = {
   [HomeTabRoute.FEED]: undefined // undefined means there are not props passed through navigation
   [HomeTabRoute.PROFILE]: undefined
-  [HomeTabRoute.FAVORITE]: undefined
+  [HomeTabRoute.MY_VIDEOS]: undefined
 }

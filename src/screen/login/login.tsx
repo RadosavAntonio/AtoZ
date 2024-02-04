@@ -1,15 +1,35 @@
-import React, { useState } from 'react'
-import { Button, Pressable, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors } from '../../assets/colors'
-import { InputField } from './components/inputField'
+import { InputField } from '../../globalComponents/inputField'
 import { SCREEN_MARGIN_HORIZONTAL, SPACE } from '../../assets/constants'
-import { getAdjustedWidth } from '../../assets/globalUtilityFunctionsAndConstants'
+import {
+  getAdjustedHeight,
+  getAdjustedWidth,
+} from '../../assets/globalUtilityFunctionsAndConstants'
 import { LargeButton } from '../../globalComponents/largeButton'
+import { useAppNavigation } from '../../navigation/hooks/useNavigation'
+import { Screen } from '../../navigation/navigation'
+import { loginUser } from '../../api/user'
+import { resetToInitialState, setUserLogin } from '../../store/reducers/user'
+import { useAppDispatch } from '../../navigation/hooks/useDispatch'
 
-export const Login = () => {
+export const Login = (): JSX.Element => {
+  const navigation = useAppNavigation()
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(resetToInitialState())
+  }, [])
+
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+
+  const [error, setError] = useState('')
+
+  const navigateToRegister = () => navigation.navigate(Screen.REGISTER)
+  const navigateToHome = () => navigation.navigate(Screen.HOME)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,9 +49,22 @@ export const Login = () => {
           keyboardType={'default'}
         />
       </View>
-      <LargeButton label={'Login'} onPress={() => null} />
+      {error.length > 0 && <Text style={styles.error}>{error}</Text>}
       <LargeButton
-        onPress={() => null}
+        label={'Login'}
+        onPress={async () => {
+          const user = await loginUser(email, password)
+          if (!user.status) {
+            setError(user.error)
+          } else {
+            setError('')
+            dispatch(setUserLogin())
+            navigateToHome
+          }
+        }}
+      />
+      <LargeButton
+        onPress={navigateToRegister}
         containerStyle={styles.registrationButton}>
         <Text style={styles.infoText}>Don't have an account?</Text>
       </LargeButton>
@@ -67,5 +100,11 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: colors.vogueWhite,
     fontSize: getAdjustedWidth(14),
+  },
+
+  error: {
+    fontSize: getAdjustedWidth(16),
+    color: colors.warningRed,
+    marginBottom: getAdjustedHeight(24),
   },
 })

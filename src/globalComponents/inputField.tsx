@@ -6,8 +6,8 @@ import {
   TextInput,
   View,
 } from 'react-native'
-import { getAdjustedWidth } from '../../../assets/globalUtilityFunctionsAndConstants'
-import { colors } from '../../../assets/colors'
+import { getAdjustedWidth } from '../assets/globalUtilityFunctionsAndConstants'
+import { colors } from '../assets/colors'
 
 interface Props {
   onChangeText: (val: string) => void

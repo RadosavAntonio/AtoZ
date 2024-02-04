@@ -5,8 +5,7 @@ import Reactotron from '../../ReactotronConfig'
 import { UserData } from './types/user'
 import { userReducer } from './reducers/user'
 
-// import { logger } from 'redux-logger'
-
+export type AppDispatch = typeof store.dispatch
 export interface AppStore {
   user: UserData
 }
@@ -20,8 +19,8 @@ const configuration = {
   key: 'root',
   storage: AsyncStorage,
   version: 1,
-  whitelist: ['user'], // I persist videos for performance reasons
-  blacklist: ['modal'],
+  whitelist: ['user'], // Persist user for easy log in process
+  blacklist: [],
 }
 const persistedReducer = persistReducer(configuration, rootReducer)
 
