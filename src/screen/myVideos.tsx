@@ -3,10 +3,10 @@ import { StyleSheet, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors } from '../assets/colors'
 
-export const Favorite = () => {
+export const MyVideos = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>FAVORITE</Text>
+      <Text>MY VIDEOS</Text>
     </SafeAreaView>
   )
 }

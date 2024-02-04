@@ -1,28 +1,20 @@
 import React, { memo } from 'react'
-import {
-  AppNavigationParams,
-  HomeTabList,
-  HomeTabRoute,
-  Screen,
-} from './navigation'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { Home } from '../screen/home'
-import { StyleSheet } from 'react-native'
-import { Profile } from '../screen/profile'
-import { colors } from '../assets/colors'
-import { Favorite } from '../screen/favorite'
-import {
-  BottomTabBarProps,
-  createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs'
-import { TabBar } from './components/tabBar'
+import { HomeTabList, HomeTabRoute, Screen } from '../navigation'
+import { Profile } from '../../screen/profile'
+import { colors } from '../../assets/colors'
+import { MyVideos } from '../../screen/myVideos'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
   FontAwesome,
   fasPhotoFilm,
   fasStar,
   fasUser,
-} from '../assets/fontAwesome'
-import { getAdjustedWidth } from '../assets/globalUtilityFunctionsAndConstants'
+} from '../../assets/fontAwesome'
+import { getAdjustedWidth } from '../../assets/globalUtilityFunctionsAndConstants'
+import { Login } from '../../screen/login/login'
+import { Register } from '../../screen/login/register'
+import { AppStack } from '../rootNavigation'
+import { Home } from '../../screen/home'
 
 const AppTabs = createBottomTabNavigator<HomeTabList>()
 
@@ -42,8 +34,8 @@ export const TabsNavigation = memo((): JSX.Element => {
         tabBarInactiveTintColor: colors.white50,
       }}>
       <AppTabs.Screen
-        name={HomeTabRoute.FAVORITE}
-        component={Favorite}
+        name={HomeTabRoute.MY_VIDEOS}
+        component={MyVideos}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome
@@ -84,8 +76,6 @@ export const TabsNavigation = memo((): JSX.Element => {
   )
 })
 
-const AppStack = createNativeStackNavigator<AppNavigationParams>()
-
 export const MainNavigation = (): JSX.Element => {
   return (
     <AppStack.Navigator
@@ -93,12 +83,12 @@ export const MainNavigation = (): JSX.Element => {
       screenOptions={{
         headerShown: false,
         navigationBarColor: colors.offBlack, // for android bar
-        animation: 'fade_from_bottom',
         header: () => null, // for customize the header
         gestureEnabled: false,
       }}>
       <AppStack.Screen name={Screen.HOME} component={TabsNavigation} />
       <AppStack.Screen name={Screen.PROFILE} component={Profile} />
+      <AppStack.Screen name={Screen.MY_VIDEOS} component={MyVideos} />
     </AppStack.Navigator>
   )
 }

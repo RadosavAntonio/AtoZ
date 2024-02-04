@@ -1,3 +1,7 @@
 export interface UserData {
-  username: string
+  isLoggedIn: boolean
+  imageUrl: string
+  displayName?: string
+  email?: string
+  uid?: string
 }

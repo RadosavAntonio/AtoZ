@@ -2,19 +2,35 @@ import { createSlice } from '@reduxjs/toolkit'
 import { UserData } from '../types/user'
 
 const initialState: UserData = {
-  username: '',
+  isLoggedIn: false,
+  imageUrl: '',
 }
 
 export const userSlice = createSlice({
   name: '_user',
   initialState: initialState,
   reducers: {
-    updateUserName: (state, { payload }) => ({
-      ...state,
-      username: payload,
-    }),
+    setUserData: (state, { payload }) => {
+      console.log('--------payload-------', payload)
+      return {
+        ...state,
+        displayName: payload.displayName,
+        email: payload.email,
+        uid: payload.uid,
+      }
+    },
+    setUserLogin: state => {
+      return {
+        ...state,
+        ...{ isLoggedIn: true },
+      }
+    },
+    resetToInitialState: () => {
+      return initialState
+    },
   },
 })
 
 export const userReducer = userSlice.reducer
-export const { updateUserName } = userSlice.actions
+export const { setUserData, setUserLogin, resetToInitialState } =
+  userSlice.actions
