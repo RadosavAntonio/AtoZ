@@ -15,23 +15,26 @@ import auth from '@react-native-firebase/auth'
 import { Screen } from '../navigation/navigation'
 import { resetToInitialState } from '../store/reducers/user'
 import { SCREEN_MARGIN_HORIZONTAL, SPACE } from '../assets/constants'
+import { useSelector } from 'react-redux'
+import { AppStore } from '../store/store'
+import { UserImageSelector } from '../globalComponents/userImageSelector'
 
 export const Profile = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const navigation = useAppNavigation()
 
+  const user = useSelector((store: AppStore) => store.user)
+
   const deleteAccount = () => {
     const user = auth().currentUser
-
     if (user) {
-      // Delete the user
       user
         .delete()
         .then(() => {
           dispatch(resetToInitialState())
           navigation.navigate(Screen.LOGIN)
         })
-        .catch(error => {
+        .catch(() => {
           Alert.alert(
             'Oooops something went wrong. For more help please contact us at antonio@gmail.com',
           )
@@ -41,7 +44,10 @@ export const Profile = (): JSX.Element => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View />
+      <View style={styles.userDataContainer}>
+        <UserImageSelector />
+        <Text style={styles.userName}>{user.displayName}</Text>
+      </View>
       <View>
         <LargeButton
           onPress={() => showLogoutAlert({ logout: () => dispatch(logout()) })}
@@ -76,5 +82,15 @@ const styles = StyleSheet.create({
     fontSize: getAdjustedWidth(14),
     textAlign: 'center',
     marginTop: SPACE[32],
+  },
+
+  userDataContainer: {
+    alignItems: 'center',
+  },
+
+  userName: {
+    fontSize: 24,
+    color: colors.vogueWhite,
+    fontWeight: '600',
   },
 })

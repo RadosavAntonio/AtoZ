@@ -1,7 +1,6 @@
 import { firebase } from '@react-native-firebase/auth'
-import { Dispatch, createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import { setUserData } from '../reducers/user'
-import { AppDispatch } from '../store'
 
 export const fetchUserData = createAsyncThunk<void, void>(
   '_user/fetchUserData',

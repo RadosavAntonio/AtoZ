@@ -11,7 +11,6 @@ export const userSlice = createSlice({
   initialState: initialState,
   reducers: {
     setUserData: (state, { payload }) => {
-      console.log('--------payload-------', payload)
       return {
         ...state,
         displayName: payload.displayName,

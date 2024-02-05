@@ -10,7 +10,7 @@ export const colors = {
   white50: 'rgba(255, 255, 255, 0.5)',
   white25: 'rgba(255, 255, 255, 0.25)',
   white15: 'rgba(255, 255, 255, 0.15)',
-  overlayBlack70: 'rgba(0, 0, 0, 0.7)',
+  overlayBlack80: 'rgba(0, 0, 0, 0.8)',
   transparent: 'transparent',
   red: 'rgba(235, 66, 66, 1)',
   pumpkin: '#EE7B30',

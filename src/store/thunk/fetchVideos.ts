@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { updateData } from '../reducers/videos'
 import { AppStore } from '../store'
 
-export const fetchVideos = createAsyncThunk<any, any>(
+export const fetchVideos = createAsyncThunk(
   'videos/fetchPopularVideos',
   async (_payload, { dispatch, getState }) => {
     const pageNumber = (getState() as AppStore).video.page + 1
