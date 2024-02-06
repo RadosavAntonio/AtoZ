@@ -6,16 +6,12 @@ import { AuthNavigation } from './components/authNavigation'
 import { MainNavigation } from './components/mainNavigator'
 import { fetchUserData } from '../store/thunk/user'
 import { useAppDispatch } from './hooks/useDispatch'
+import { AppStore } from '../store/store'
 
 export const AppStack = createNativeStackNavigator<AppNavigationParams>()
 
 export const RootNavigation = memo(() => {
-  const dispatch = useAppDispatch()
-  // this useEffect has ta role to load all the requested data when the app is loading. Is recommented to use it on a new screen with a loader. TO DO
-  useEffect(() => {
-    dispatch(fetchUserData())
-  }, [])
+  const user = useSelector((store: AppStore) => store.user)
 
-  const userStatus = useSelector(state => state.user)
-  return userStatus.isLoggedIn ? <MainNavigation /> : <AuthNavigation />
+  return user.isLoggedIn ? <MainNavigation /> : <AuthNavigation />
 })

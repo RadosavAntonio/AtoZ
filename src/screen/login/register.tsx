@@ -71,6 +71,7 @@ export const Register = () => {
             setError('')
             setSuccess('You have successfully registered')
             setTimeout(() => navigateToRegisterImage(), 1000)
+            dispatch(fetchUserData())
           }
         }}
         disabled={
