@@ -4,6 +4,7 @@ export enum Screen {
   MY_VIDEOS = 'My Videos',
   LOGIN = 'Login',
   REGISTER = 'Register',
+  REGISTER_IMAGE = 'Register Image',
 }
 
 export type AppNavigationParams = {
@@ -12,6 +13,7 @@ export type AppNavigationParams = {
   [Screen.MY_VIDEOS]: undefined
   [Screen.LOGIN]: undefined
   [Screen.REGISTER]: undefined
+  [Screen.REGISTER_IMAGE]: undefined
 }
 
 export enum HomeTabRoute {

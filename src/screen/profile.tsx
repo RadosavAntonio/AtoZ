@@ -92,5 +92,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: colors.vogueWhite,
     fontWeight: '600',
+    marginTop: SPACE[32],
   },
 })
