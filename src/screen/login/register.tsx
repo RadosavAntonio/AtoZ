@@ -13,11 +13,9 @@ import { useAppNavigation } from '../../navigation/hooks/useNavigation'
 import { createUser } from '../../api/user'
 import { Screen } from '../../navigation/navigation'
 import { useAppDispatch } from '../../navigation/hooks/useDispatch'
-import { setUserLogin } from '../../store/reducers/user'
 
 export const Register = () => {
   const navigation = useAppNavigation()
-  const dispatch = useAppDispatch()
 
   const [fullName, setFullName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
@@ -28,7 +26,8 @@ export const Register = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const navigateToHome = () => navigation.navigate(Screen.HOME)
+  const navigateToRegisterImage = () =>
+    navigation.navigate(Screen.REGISTER_IMAGE)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -71,8 +70,7 @@ export const Register = () => {
             setIsLoading(true)
             setError('')
             setSuccess('You have successfully registered')
-            dispatch(setUserLogin())
-            setTimeout(() => navigateToHome, 1000)
+            setTimeout(() => navigateToRegisterImage(), 1000)
           }
         }}
         disabled={

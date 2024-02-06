@@ -1,10 +1,9 @@
 import React, { memo, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AppNavigationParams } from './navigation'
 import { AuthNavigation } from './components/authNavigation'
 import { MainNavigation } from './components/mainNavigator'
-import { firebase } from '@react-native-firebase/auth'
 import { fetchUserData } from '../store/thunk/user'
 import { useAppDispatch } from './hooks/useDispatch'
 

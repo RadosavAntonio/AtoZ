@@ -18,6 +18,12 @@ export const userSlice = createSlice({
         uid: payload.uid,
       }
     },
+    setUserImage: (state, { payload }) => {
+      return {
+        ...state,
+        imageUrl: payload,
+      }
+    },
     setUserLogin: state => {
       return {
         ...state,
@@ -31,5 +37,5 @@ export const userSlice = createSlice({
 })
 
 export const userReducer = userSlice.reducer
-export const { setUserData, setUserLogin, resetToInitialState } =
+export const { setUserData, setUserImage, setUserLogin, resetToInitialState } =
   userSlice.actions

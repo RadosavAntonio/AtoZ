@@ -1,5 +1,6 @@
 // GENERAL
 export const SPACE = {
+  64: 64,
   32: 32,
   24: 24,
   18: 18,
