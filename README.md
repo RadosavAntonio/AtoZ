@@ -31,3 +31,7 @@
 - Implements TypeScript throughout the entire app.
   
 Note: The app can be further improved with the existence of a backend.
+
+
+https://github.com/RadosavAntonio/AtoZ/assets/49883507/dd510284-4bfc-45fb-8028-42929de5d042
+
