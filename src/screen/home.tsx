@@ -16,6 +16,7 @@ import {
   SPACE,
 } from '../assets/constants'
 import { result } from 'lodash'
+import { fetchUserData } from '../store/thunk/user'
 
 export const Home = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -40,6 +41,11 @@ export const Home = (): JSX.Element => {
   // on a Pro level app this will be on a loader screen before Home
   useEffect(() => {
     !videosData.page && dispatch(fetchVideos())
+  }, [])
+
+  // this useEffect has ta role to load all the requested data when the app is loading. Is recommented to use it on a new screen with a loader. TO DO
+  useEffect(() => {
+    dispatch(fetchUserData())
   }, [])
 
   const onUserIdChangeText = (text: string) => {
